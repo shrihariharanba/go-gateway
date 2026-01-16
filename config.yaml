@@ -1,0 +1,13 @@
+server:
+  port: 8080
+  tlsEnabled: false
+
+azure:
+  enabled: false
+  tenantId: ""
+  clientId: ""
+  issuer: ""
+
+routes:
+  - path: /api/test
+    upstream: http://localhost:9001
