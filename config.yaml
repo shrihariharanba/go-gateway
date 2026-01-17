@@ -2,12 +2,37 @@ server:
   port: 8080
   tlsEnabled: false
 
-azure:
+sso:
+  # Choose which provider to enable: none, azure, google, okta
   enabled: false
-  tenantId: ""
-  clientId: ""
-  issuer: ""
+  type: none  # options: none, azure, google, okta
+
+  # Common fields for OIDC providers
+  clientId: "YOUR_CLIENT_ID"
+  clientSecret: "YOUR_CLIENT_SECRET"
+  redirectUrl: "https://your-app.com/callback"
+
+  # Azure specific
+  tenantId: "YOUR_AZURE_TENANT_ID"   # Optional for Okta/Google
+
+  # Okta specific
+  issuerUrl: "https://<dev>.okta.com/oauth2/default"  # Optional for Azure/Google
+
 
 routes:
-  - path: /api/test
-    upstream: http://localhost:9001
+  - path: /test
+    upstream: http://localhost:3000
+    scopes: []
+    authPolicy: none
+  - path: /private
+    upstream: http://localhost:9000
+    scopes: []
+    authPolicy: required
+
+telemetry:
+  - type: "prometheus"
+    enabled: false
+    path: "/metrics"
+  - type: "otel"
+    enabled: false
+    endpoint: "localhost:4317"

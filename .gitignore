@@ -1,0 +1,37 @@
+# Binaries and executables
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+
+# Project build outputs
+/go-gateway
+go-gateway.exe
+/bin/
+/build/
+
+# Go tool files
+*.out
+
+# Dependency/vendor directory
+/vendor/
+
+# Go workspace (optional)
+go.work
+
+# IDE / editor
+.idea/
+*.iml
+.vscode/
+*.swp
+.github
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and temporary
+*.log
+*.tmp
